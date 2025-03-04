@@ -10,21 +10,23 @@ export default function ProductsItem(props) {
     
   }
   return (
-    <div className="relative flex flex-col">
+    <div className="relative flex flex-col shadow-md">
       <div className="overflow-hidden cursor-pointer" onClick={()=>{handleDetailPageClick(product.slug)}}>
         <img
-          className="hover:scale-110"
+          className="hover:scale-110 h-full"
           src={product?.image_url}
           alt={product?.name}
         />
       </div>
 
       <div>
+        <div className="px-5">
         <p className="mt-2">{product?.name}</p>
         <p className="font-medium text-theme">{product?.price}</p>
+        </div>
 
         <div>
-          <button className="my-5 h-10 w-full bg-theme hover:bg-theme-light text-white">
+          <button className="mt-5 h-10 w-full bg-theme hover:bg-theme-light text-white">
             Add to cart
           </button>
         </div>

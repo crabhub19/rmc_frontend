@@ -3,9 +3,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const getProducts = createAsyncThunk(
     "product/getProducts",
-    async (_, { rejectWithValue }) => {
+    async (page=1, { rejectWithValue }) => {
         try {
-            const response = await api.get("products");
+            const response = await api.get(`products?page=${page}`);
             return response.data;
         } catch (error) {
             return rejectWithValue(error.response.data);
@@ -19,9 +19,9 @@ const productSlice = createSlice({
         products: [],
         productStatus: "idle",
         productDetail: null,
-        ProductNext : null,
-        ProductPrevious : null,
-        ProductCount : 0
+        productNext : null,
+        productPrevious : null,
+        productCount : 0
     },
     reducers: {},
     extraReducers: (builder) => {
@@ -32,9 +32,9 @@ const productSlice = createSlice({
             .addCase(getProducts.fulfilled, (state, action) => {
                 state.productStatus = "success";
                 state.products = action.payload.results;
-                state.ProductNext = action.payload.next;
-                state.ProductPrevious = action.payload.previous;
-                state.ProductCount = action.payload.count;
+                state.productNext = action.payload.next;
+                state.productPrevious = action.payload.previous;
+                state.productCount = action.payload.count;
                 state.productDetail = action.payload.detail;
             })
             .addCase(getProducts.rejected, (state, action) => {

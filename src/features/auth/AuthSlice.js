@@ -65,11 +65,8 @@ export const googleAuth = createAsyncThunk(
             );
             localStorage.setItem("access_token", response.data.access);
             localStorage.setItem("refresh_token",response.data.refresh)
-            console.log("crab response", response.data);
-            
             return response.data;
-        } catch (error) {
-            console.log("crab error", error);     
+        } catch (error) {   
             return rejectWithValue(error.response.data);
         }
     }

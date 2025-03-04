@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate, } from "react-router-dom";
 import logo from "../assets/image/built-in/logo.png";
 import {
   BaggageClaim,
@@ -76,7 +76,7 @@ export default function NavBar() {
       ];
   return (
     <>
-      <header className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-5">
+      <header className="mx-auto flex h-16 items-center justify-between px-8 lg:px-24">
         <Link to="/">
           <img
             className="cursor-pointer sm:h-auto w-28"
@@ -176,11 +176,11 @@ export default function NavBar() {
       </section>
 
       {/* desktop menu */}
-      <nav className="relative bg-theme shadow">
+      <nav className={`relative bg-theme ${pathLocation === "/" ? 'shadow-2xl drop-shadow-2xl':'shadow-sm'} `}>
         <div className="mx-auto hidden h-12 w-full max-w-[1200px] items-center md:flex">
           <button
             onClick={() => setCategoryMenuOpen(!categoryMenuOpen)}
-            className="ml-5 flex h-full w-40 cursor-pointer items-center justify-center bg-primary hover:bg-primary-light text-theme"
+            className="ml-5 flex h-full w-40 cursor-pointer items-center justify-center bg-primary hover:bg-primary-light text-theme shadow-sm drop-shadow-sm"
           >
             <div className="flex justify-around" href="#">
               <Menu />

@@ -11,6 +11,8 @@ const GoogleAuth = () => {
     const navigate = useNavigate()
     const handleSuccess = async (response) => {
         const token = response.credential;
+        console.log(token);
+        
         if(!token){
             console.error('No token found in the response');
         }
